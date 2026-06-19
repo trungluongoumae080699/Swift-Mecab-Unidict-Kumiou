@@ -47,7 +47,7 @@ let package = Package(
         
         .target(name: "IPADic", dependencies: ["Dictionary"], resources: [.copy("ipadic dictionary")]),
 
-        .target(name: "Unidic", dependencies: ["Dictionary"], resources: [.copy("unidic-lite")]),
+        .target(name: "Unidic", dependencies: ["Dictionary"], exclude: ["unidic-lite"]),
         
         .testTarget(
             name: "Mecab-SwiftTests",

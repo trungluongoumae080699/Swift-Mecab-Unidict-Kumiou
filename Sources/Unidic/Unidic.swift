@@ -12,13 +12,31 @@ import Dictionary
 A wrapper around unidic-lite. UniDic uses a 26-field feature CSV with a
 different layout than IPADic; the field schema is declared in
 `unidic-lite/dicrc` and mirrored on `UnidicTokenIndexProviding`.
+
+The dictionary binaries are not bundled with this package — they exceed
+GitHub's per-file size limit. Clients must download `unidic-lite` separately
+and add it to their app bundle (or any container they can resolve a URL to),
+then pass that URL to `init(url:)` or `init(bundle:resourceName:)`.
 */
 public struct Unidic: UnidicDictionaryProviding {
 
     public let url: URL
 
-    public init() {
-        self.url = Bundle.module.url(forResource: "unidic-lite", withExtension: nil)!
+    /// Initialize from an explicit URL pointing to a `unidic-lite` directory.
+    /// The directory must contain `sys.dic`, `matrix.bin`, `char.bin`,
+    /// `unk.dic`, and `dicrc`.
+    public init(url: URL) {
+        self.url = url
+    }
+
+    /// Locate a `unidic-lite` folder inside a bundle the client app controls.
+    /// Defaults to `Bundle.main` and a folder named `"unidic-lite"`.
+    /// Returns `nil` if the resource is missing.
+    public init?(bundle: Bundle = .main, resourceName: String = "unidic-lite") {
+        guard let url = bundle.url(forResource: resourceName, withExtension: nil) else {
+            return nil
+        }
+        self.url = url
     }
 
     public var description: String {
