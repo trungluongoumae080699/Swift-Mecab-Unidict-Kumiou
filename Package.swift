@@ -4,14 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "Mecab-Swift",
+    name: "Mecab-Swift-Unidict",
     defaultLocalization: "en",
     platforms: [.macOS(.v10_11)],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "Mecab-Swift",
-            targets: ["Mecab-Swift"]),
+            name: "Mecab-Swift-Unidict",
+            targets: ["Mecab-Swift-Unidict"]),
         
         .library(
                 name: "IPADic",
@@ -39,7 +39,7 @@ let package = Package(
         .target(name: "Dictionary"),
         
         .target(
-            name: "Mecab-Swift",
+            name: "Mecab-Swift-Unidict",
             dependencies: ["mecab", "StringTools", "Dictionary"]),
 
         .target(name: "CharacterFilter"),
@@ -51,7 +51,7 @@ let package = Package(
         
         .testTarget(
             name: "Mecab-SwiftTests",
-            dependencies: ["Mecab-Swift", "CharacterFilter", "IPADic"],
+            dependencies: ["Mecab-Swift-Unidict", "CharacterFilter", "IPADic"],
             resources: [.copy("Resources/helicobacter.html")]
         ),
         

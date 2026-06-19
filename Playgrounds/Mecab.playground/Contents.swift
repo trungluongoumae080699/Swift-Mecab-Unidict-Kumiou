@@ -4,7 +4,7 @@ import CoreText
 
 import IPADic
 import StringTools
-import Mecab_Swift
+import Mecab_Swift_Unidict
 import Foundation
 import CoreGraphics
 import NaturalLanguage

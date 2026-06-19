@@ -1,5 +1,5 @@
 import XCTest
-import Mecab_Swift
+import Mecab_Swift_Unidict
 import CharacterFilter
 import IPADic
 import Dictionary
