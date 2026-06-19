@@ -16,7 +16,11 @@ let package = Package(
         .library(
                 name: "IPADic",
                 targets: ["IPADic"]),
-        
+
+        .library(
+                name: "Unidic",
+                targets: ["Unidic"]),
+
         .library(
             name: "CharacterFilter",
             targets: ["CharacterFilter"]),
@@ -42,6 +46,8 @@ let package = Package(
         .target(name: "StringTools"),
         
         .target(name: "IPADic", dependencies: ["Dictionary"], resources: [.copy("ipadic dictionary")]),
+
+        .target(name: "Unidic", dependencies: ["Dictionary"], resources: [.copy("unidic-lite")]),
         
         .testTarget(
             name: "Mecab-SwiftTests",
